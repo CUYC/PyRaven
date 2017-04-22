@@ -111,6 +111,7 @@ def authenticate( service, thisURL, targetURL = '', **args ):
 					'targetDescription': ('desc', lambda x: x),
 					'reauthenticate': ('iact', lambda x: x),
 					'message': ('msg', lambda x: x),
+ 					'wls_response': ('wls', lambda x: ''),
 					'ravenHandlesErrors': ('fail', lambda b: {True: 'yes', False: ''}[b]),
 					'pageParameters': ('params', lambda x: x),
 					'maximumClockSkew': ('skew', lambda x: str(x)),
@@ -125,9 +126,12 @@ def authenticate( service, thisURL, targetURL = '', **args ):
 			authArgs[translatedArgName] = translator(value)
 		
 		ravenURL = RavenLL.authenticationRequest( service.url, theTargetURL(), **authArgs )
-		redirect( ravenURL )
+		return ravenURL
 		
-	wls_response_string = wls_response()
+	if haveArgument('wls_response'):
+		wls_response_string = args['wls_response']
+	else:
+		wls_response_string = None
 	
 	httpResponse = RavenResponse( wls_response_string ).response
 	if httpResponse:
@@ -144,7 +148,7 @@ def authenticate( service, thisURL, targetURL = '', **args ):
 		pass
 	
 	persistenceMethod.delete()
-	redirectToRaven()
+	return {"redirect": redirectToRaven()}
 
 class Credentials:
 	def __init__(self, response):
@@ -158,10 +162,8 @@ class Credentials:
 	message = property(fget = lambda self: self.response.msg)
 
 def wls_response():
-	return ''
+	return None
 
-def redirect( url ):
-	pass
 
 def gmtime():
 	return time.gmtime()
