@@ -1,0 +1,16 @@
+Metadata-Version: 1.0
+Name: PyRaven
+Version: 1.0
+Summary: A Raven web application agent library for Python
+Home-page: http://www.metapaw.co.uk/projects/pyraven/
+Author: Tom Huckstep, Richard Smith
+Author-email: pyraven-devel@metapaw.co.uk
+License: LGPL
+Description: UNKNOWN
+Keywords: Raven WAA web application agent python
+Platform: UNKNOWN
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Programming Language :: Python
+Classifier: Intended Audience :: Developers
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: GNU Lesser General Public License (LGPL)
