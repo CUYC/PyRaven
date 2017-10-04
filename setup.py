@@ -8,7 +8,7 @@ LIBDIR = [
 	"/usr/local/lib",
 	"/sw/lib/", # For Mac OS X
 	]
-LIBS   = ["ssl"]
+LIBS   = ["ssl", "crypto"]
 # Pyrex generates C code for which gcc emits warnings, so suppress them
 CFLAGS = ["-Wno-implicit", "-Wno-unused"]
 
